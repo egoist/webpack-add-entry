@@ -1,6 +1,6 @@
 {
   "name": "webpack-add-entry",
-  "version": "0.0.0",
+  "version": "0.1.0",
   "description": "Add webpack entry",
   "license": "MIT",
   "repository": "egoist/webpack-add-entry",
