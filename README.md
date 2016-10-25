@@ -11,30 +11,67 @@ $ npm install --save webpack-add-entry
 ## Usage
 
 ```js
-const webpackAddEntry = require('webpack-add-entry')
+const addEntry = require('webpack-add-entry')
 
-webpackAddEntry('unicorns')
-//=> 'unicorns & rainbows'
+const webpackConfig = {entry: './entry.js'}
+webpack.entry = addEntry(webpack.entry, './new-entry.js')
+//=> entry: ['./entry.js', './new-entry.js']
 ```
 
 ## API
 
-### webpackAddEntry(input, [options])
+### webpackAddEntry(entry, newEntry, [options])
 
-#### input
+Returns the new entry without mutating the old one.
 
-Type: `string`
+#### entry
 
-Lorem ipsum.
+Type: `string` `array` `object`<br>
+Required: `true`
+
+Webpack entry.
+
+#### newEntry
+
+Type: `string`<br>
+Required: `true`
+
+New webpack entry to add.
 
 #### options
 
-##### foo
+One of `key` and `to` is required.
 
-Type: `boolean`  
-Default: `false`
+##### key
 
-Lorem ipsum.
+Type: `string`
+
+Add a new chunk entry, eg:
+
+```js
+addEntry({client: './client.js'}, './server.js', {key: 'server'})
+/*
+{
+  client: './client.js',
+  server: './server.js'
+}
+*/
+```
+
+##### to
+
+Type: `string`
+
+Add to a chunk entry, eg:
+
+```js
+addEntry({client: './client.js', './server.js', {to: 'client'}})
+/*
+{
+  client: ['./client.js', './server.js']
+}
+*/
+```
 
 ## Contributing
 
