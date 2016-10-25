@@ -14,7 +14,7 @@ $ npm install --save webpack-add-entry
 const addEntry = require('webpack-add-entry')
 
 const webpackConfig = {entry: './entry.js'}
-webpackConfig.entry = addEntry(webpack.entry, './new-entry.js')
+webpackConfig.entry = addEntry(webpackConfig.entry, './new-entry.js')
 //=> entry: ['./entry.js', './new-entry.js']
 ```
 
